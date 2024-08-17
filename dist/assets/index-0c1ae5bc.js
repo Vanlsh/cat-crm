@@ -39,13 +39,4 @@
     fetch(link.href, fetchOpts);
   }
 })();
-function foo(...args) {
-  console.log(this);
-  console.log(args);
-}
-const foo2 = foo.bind({ name: "ivam" }, 3);
-const foo3 = foo2.bind({ name: "ivan" }, 2);
-foo3();
-const obj = /* @__PURE__ */ Object.create(null);
-obj.name = "ivan";
-console.log(obj);
+const main = "";

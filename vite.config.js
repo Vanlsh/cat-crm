@@ -34,11 +34,13 @@ export default defineConfig({
         glob
           .sync(["./*.html", "./pages/**/*.html"])
           .map((file) => [
-            path.relative(__dirname, file.slice(0, file.length - path.extname(file).length)),
+            path.relative(
+              __dirname,
+              file.slice(0, file.length - path.extname(file).length)
+            ),
             fileURLToPath(new URL(file, import.meta.url)),
           ])
       ),
-      // output unminified CSS file
       output: {
         assetFileNames: "assets/[name].[ext]",
       },
