@@ -51,8 +51,8 @@ const toggleMenu = () => {
   refsMenu.overlayMenu.classList.toggle("is-open");
   document.body.style.overflow = isOpenMenu ? "hidden" : "auto";
 };
-toggleMenu.openMenuButton.addEventListener("click", toggleMenu);
-toggleMenu.closeMenuButton.addEventListener("click", toggleMenu);
+refsMenu.openMenuButton.addEventListener("click", toggleMenu);
+refsMenu.closeMenuButton.addEventListener("click", toggleMenu);
 window.matchMedia("(min-width: 1200px)").addEventListener("change", (event) => {
   if (!event.matches)
     return;

@@ -1,75 +1,26 @@
-@use "../utilities/mixins";
+@use "../utils/placeholders";
+@use "../utils/functions" as fn;
+@use "../utils/mixins" as mx;
+@use "../utils/variables" as var;
 
 .main {
-  flex: 1;
-  &-header {
-    padding: 2.5rem 2rem;
+  display: grid;
+  gap: 40px;
+  padding: 16px;
+  grid-template-areas: "welcome" "co-workers" "tasks" "reports";
+
+  @include mx.mq("md") {
+    gap: 36px;
+    padding: 36px;
+
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-areas: "welcome welcome" "co-workers co-workers" "tasks reports";
   }
 
-  &-logo {
-    width: 300px;
-    height: 300px;
-    display: inline-block;
-    position: relative;
-    margin-bottom: 3rem;
+  @include mx.mq("lg") {
+    grid-area: main;
 
-    @include mixins.viewport-md {
-      width: 360px;
-      height: 360px;
-    }
-
-    &::before {
-      content: "";
-      position: absolute;
-      z-index: -1;
-      top: 50%;
-      left: 50%;
-      width: 70%;
-      height: 70%;
-      transform: translate(-50%, -50%);
-      border-radius: 50%;
-      background: var(--hero-name-background);
-      filter: blur(72px);
-    }
-  }
-
-  &-logo-img {
-    width: 100%;
-    height: 100%;
-  }
-
-  &-title {
-    &-link {
-      position: relative;
-      transition: 200ms ease;
-
-      &::before {
-        content: "";
-        position: absolute;
-        bottom: 5px;
-        left: 50%;
-        transform: translateX(-50%) skewX(-10deg);
-        z-index: -1;
-
-        width: 105%;
-        height: 20%;
-        background-color: var(--brand-light-color);
-
-        transition: 200ms ease;
-      }
-
-      &:hover,
-      &:focus {
-        color: var(--brand-light-color);
-
-        &::before {
-          background-color: var(--main-text-color);
-        }
-      }
-    }
-  }
-
-  &-badges {
-    margin: 3rem 0 5rem;
+    grid-template-columns: repeat(auto-fit, minmax(455px, 629px));
+    grid-template-areas: "welcome welcome" "co-workers tasks" "co-workers reports";
   }
 }
